@@ -9,15 +9,14 @@ with tab1:
     
     st.header("Here you can track your expenses for this month")
     st.subheader("Upload a csv file, you can download an updated version when you have finnished using the app.")
-    csv_file = st.file_uploader("This file is generated from this website, and is used to keep track of previous financial info. You can download the updated file from here as well", "csv", key="csv_file")
+    csv_file = st.file_uploader("This file is generated from this website, and is used to keep track of previous financial info. You can download the updated file from here as well", "csv")
     if csv_file:
         #Saving file
         with open(csv_file.name, "wb") as f:
             f.write(csv_file.getbuffer())
-        
         st.download_button("Download csv", csv_file, "expenses.csv")
     else:
-        st.header("Error")
+        pass
     budget = float(st.text_input("Enter your budget", 0))
     
     
@@ -65,4 +64,5 @@ with tab2:
         except:
             st.write("To display charts the csv file must contain data")
     
+
 
