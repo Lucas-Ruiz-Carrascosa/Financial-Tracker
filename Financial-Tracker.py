@@ -11,6 +11,9 @@ with tab1:
     st.subheader("Upload a csv file, you can download an updated version when you have finnished using the app.")
     csv_file = st.file_uploader("This file is generated from this website, and is used to keep track of previous financial info. You can download the updated file from here as well", "csv")
     if csv_file:
+                #Saving file
+        with open(csv_file.name, "wb") as f:
+            f.write(csv_file.getbuffer())
         
         st.download_button("Download csv", csv_file, "expenses.csv")
     else:
